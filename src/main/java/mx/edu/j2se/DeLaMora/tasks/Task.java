@@ -92,12 +92,12 @@ public class Task {
     }
 
     public int getRepeatInterval(){
-        if(this.interval != 0){
+    if (this.interval != 0) {
             return interval;
+        } else {
+            return 0;
         }
-        return 0;
     }
-
 
     public void setTime(int startTime, int endTime, int interval) {
 
@@ -107,9 +107,22 @@ public class Task {
             this.interval = interval;
         }
 
-
     }
 
+    public boolean isRepeated(){
+        if(this.interval != 0) {
+            return true;
+        }else{
+                return false;
+            }
+            }
 
 
+    public int nextTimeAfter(int current) {
+        if (endTime-current != 0) {
+            return startTime;
+        } else {
+            return -1;
+        }
+    }
 }
