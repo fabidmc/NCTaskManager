@@ -16,6 +16,7 @@ public class Main {
 		//estudianteNC2.setNombre("Fabiola");
 		//estudianteNC2.setEdad(22);
 
+        // TASK NO REPETITIVE
 
 		Task mytask = new Task("meeting in a cafe",10);
 		mytask.setActive(true);
@@ -33,14 +34,15 @@ public class Main {
 		System.out.println("The task will be repeated?:\t" + mytask.isRepeated());
 
 
-		System.out.println("The task will start at:\t" + mytask.getTitle() + "\tes\t" + mytask.getStartTime());
-		System.out.println("The task will end at:\t" + mytask.getTitle() + "\tes\t" + mytask.getEndTime());
+		System.out.println("The task will start at:\t" + mytask.getTitle() + "\tis\t" + mytask.getStartTime());
+		System.out.println("The task will end at:\t" + mytask.getTitle() + "\tis\t" + mytask.getEndTime());
 		System.out.println("The task have an interval:\t" + mytask.getTitle() + "\tof\t" + mytask.getRepeatInterval());
 
 
-		// TASK REPETITIVO
+		// TASK REPETITIVE
 
 		Task mytask2 = new Task("breakfast",9,10,5);
+		mytask2.setActive(true);
 		System.out.println("Task:\t" + mytask2.getTitle());
 		System.out.println("Start time of this task\t:" + mytask2.getStartTime() + "\tand this will end at:\t" + mytask2.getEndTime() );
 		System.out.println("The task have an interval:\t" + mytask2.getTitle() +"\tof\t" + mytask2.getRepeatInterval());

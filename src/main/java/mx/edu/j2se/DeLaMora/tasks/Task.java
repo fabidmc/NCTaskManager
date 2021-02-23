@@ -36,6 +36,7 @@ public class Task {
 
     //Method for reading and setting the task status
     public boolean isActive(){
+
         return active;
     }
 
