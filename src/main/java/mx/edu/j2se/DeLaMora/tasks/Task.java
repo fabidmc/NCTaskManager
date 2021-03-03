@@ -8,10 +8,15 @@ public class Task {
     boolean active, repeated;
 
     // Constructor for non-repetitive task
-    public Task(String title, int time) {
-        this.title = title;
-        this.time = time;
-    }
+        public Task(String title, int time) {
+            this.title = title;
+            this.time = time;
+
+            if (time < 0) {
+                throw new IllegalArgumentException(" ERROR!!!! ");
+            }
+        }
+
 
     // Constructor for a  repetitive task
     public Task(String title, int startTime, int endTime, int interval) {
@@ -19,6 +24,10 @@ public class Task {
         this.startTime = startTime;
         this.endTime = endTime;
         this.interval = interval;
+
+        if(startTime < 0 || endTime < 0 || interval < 0){
+            throw new IllegalArgumentException(" ERROR!!!! ");
+        }
     }
 
 
