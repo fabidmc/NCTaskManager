@@ -18,9 +18,9 @@ public class ArrayTaskList {
 
     }
 
-}
 
-  /*  public boolean remove(Task task) {
+
+   public boolean remove(Task task) {
         for (int i = 0; i <= arrayList.length; i++) {
             if (task == arrayList[i]) {
                 System.out.println("Nothing to remove, tasks list is empty");
@@ -31,19 +31,18 @@ public class ArrayTaskList {
             }
         }
     }
+
+
+
+             public int size(){
+                       return arrayList.length;
+                 }
+
+            public Task getTask(int index) {
+              if (index < 0 || index > this.index) {
+                 throw new IndexOutOfBoundsException(" ERROR!!! ");
+            } else return arrayList[index];
+
+            }
 }
 
-
-            // public int size(){
-            //           return arrayList.length;
-            //     }
-
-            //public Task getTask(int index) {
-            //  if (index < 0 || index > this.index) {
-            //     throw new IndexOutOfBoundsException(" ERROR!!! ");
-            //} else return arrayList[index];
-
-            //}
-//}
-            //  }
-        */
