@@ -32,7 +32,7 @@ public class Circle {
         }
     }
 
-    public boolean getArea(int circle){
+    public int getArea(){
         return Math.PI * radius * radius;
     }
 }
