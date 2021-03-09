@@ -1,22 +1,10 @@
 package mx.edu.j2se.DeLaMora.tasks;
 
-import java.util.LinkedList;
+import java.util.Scanner;
+import static java.lang.System.out;
 
 public class Main {
 	public static void main(String[] args) {
-
-		//Persona estudianteNC = new Persona();
-
-		//estudianteNC.setNombre("Eduardo");
-		//estudianteNC.setEdad(18);
-
-		//String loDejaron = estudianteNC.loDejanEntrarAlBar();
-		//System.out.println(estudianteNC.getNombre() + loDejaron);
-
-
-		//Persona estudianteNC2 = new Persona();
-		//estudianteNC2.setNombre("Fabiola");
-		//estudianteNC2.setEdad(22);
 
 		// TASK NO REPETITIVE
 
@@ -42,7 +30,7 @@ public class Main {
 
 		// TASK REPETITIVE
 
-		Task mytask2 = new Task("breakfast", -9, 10, 5);
+		Task mytask2 = new Task("breakfast", 9, 10, 5);
 		mytask2.setActive(true);
 		System.out.println("Task:\t" + mytask2.getTitle());
 		System.out.println("Start time of this task\t:" + mytask2.getStartTime() + "\tand this will end at:\t" + mytask2.getEndTime());
@@ -55,10 +43,17 @@ public class Main {
 		}
 
 		System.out.println("The task will be repeated?:\t" + mytask2.isRepeated());
+
+		// TASK LIST
+		Task mytask3 = new Task("Hacer ejercicio",10);
+		ArrayTaskList arrayBla = new ArrayTaskList();
+		arrayBla.add(mytask3);
+		System.out.println("La tarea agregada tiene indice " + arrayBla.getTask(0));
+
+
 	}
 
 
-	// TASK LIST
 
 
 
