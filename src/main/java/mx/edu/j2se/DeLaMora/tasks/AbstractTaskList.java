@@ -1,6 +1,6 @@
 package mx.edu.j2se.DeLaMora.tasks;
 
-public class AbstractTaskList {
+public abstract class AbstractTaskList {
 
     public abstract void add(Task task);
 
