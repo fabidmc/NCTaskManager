@@ -1,8 +1,9 @@
 package mx.edu.j2se.DeLaMora.tasks;
 
  import java.util.*;
+ import java.util.stream.Stream;
 
-public class ArrayTaskList {
+public class ArrayTaskList extends AbstractTaskList{
 
     public int index = 0;
 
@@ -61,6 +62,20 @@ public class ArrayTaskList {
             return arrayList[index];
 
     }
+
+    public AbstractTaskList incoming(int from, int to){
+
+        ArrayTaskList Come = new ArrayTaskList();
+
+        return Come;
+    }
+
+    @Override
+    public Stream<Task> getStream(){
+        return ;
+    }
+
+
 
 
 }

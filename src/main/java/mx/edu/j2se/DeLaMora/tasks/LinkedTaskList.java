@@ -7,7 +7,7 @@ import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import java.util.LinkedList;
 
-public class LinkedTaskList {
+public class LinkedTaskList extends AbstractTaskList {
 
     private Node head;
     private int length = 0;
