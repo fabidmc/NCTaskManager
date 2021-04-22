@@ -13,10 +13,9 @@ public class ArrayTaskList extends AbstractTaskList{
     // METHOD FOR ADDING A NEW TASK
 
     public void add(Task task) {
-
-        Task[] newarr = Arrays.copyOf(arrayList, N + 1);
-        newarr[0] = task;
-        arrayList[N - 1] = newarr[0];
+        index++;
+        arrayList = Arrays.copyOf(arrayList, (index+ 1));
+        arrayList[N-1] = task;
 
     }
 
@@ -63,18 +62,27 @@ public class ArrayTaskList extends AbstractTaskList{
 
     }
 
-    public AbstractTaskList incoming(int from, int to){
+    public ArrayTaskList incoming(int from, int to){
 
         ArrayTaskList Come = new ArrayTaskList();
 
         return Come;
     }
 
-    @Override
-    public Stream<Task> getStream(){
-        return ;
+    public int getIndex(Task task){
+        int temp = 0;
+        for
     }
 
+    @Override
+    public Stream<Task> getStream(){
+        return null;
+    }
+
+    public ArrayTaskList cloneArrayTaskList(){
+        ArrayTaskList tempArrayTaskList = this;
+        return  tempArrayTaskList;
+    }
 
 
 

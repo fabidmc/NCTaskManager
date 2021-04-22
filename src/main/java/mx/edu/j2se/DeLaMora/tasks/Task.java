@@ -1,48 +1,39 @@
 package mx.edu.j2se.DeLaMora.tasks;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+ import java.time.LocalDateTime;
+ import java.io.Serializable;
 
-public class Task {
+public class Task implements Serializable {
 
     // VARIABLES AND THE TYPE
-    String title;
-//    LocalDateTime time = LocalDateTime.of();
 
-    int time, startTime, endTime, interval, current;
-    boolean active, repeated;
+    private String title;
+    private LocalDateTime time;
+    private LocalDateTime startTime, endTime, interval;
+
+    private boolean active, repeated;
 
 
     // Constructor for non-repetitive task
-    public Task(String title, int time) throws Exception {
-        try {
-            if (time < 0) {
-                throw new IllegalArgumentException(" ERROR!!!! ");
-            } else {
-                this.title = title;
-                this.time = time;
-            }
-        } catch (IllegalArgumentException e) {
-
+    public Task(String title, LocalDateTime time) throws IllegalArgumentException {
+        if (time.equals(null)) {
+            throw new IllegalArgumentException(" ERROR!!!! ");
         }
+        this.title = title;
+        this.time = time;
+    }
 
 
-        // Constructor for a  repetitive task
-    public Task(String title, int startTime, int endTime, int interval) throws Exception {
-            try {
-                if (startTime < 0 || endTime < 0 || interval < 0) {
-                    throw new IllegalArgumentException(" ERROR!!!! ");
-                } else {
-                    this.title = title;
-                    this.startTime = startTime;
-                    this.endTime = endTime;
-                    this.interval = interval;
-                }
-            } catch (IllegalArgumentException d) {
-            }
+    // Constructor for a  repetitive task
+    public Task(String title, LocalDateTime startTime, LocalDateTime endTime, LocalDateTime interval) throws IllegalArgumentException {
 
-
+        if (startTime.equals(0) || endTime.equals(0) || interval.equals(0)) {
+            throw new IllegalArgumentException(" ERROR!!!! ");
         }
+        this.title = title;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.interval = interval;
     }
 
 
@@ -61,7 +52,7 @@ public class Task {
     //Method for reading and setting the task status
     public boolean isActive() {
 
-        return active;
+        return this.active;
     }
 
     public void setActive(boolean active) {
@@ -73,122 +64,69 @@ public class Task {
     //METHODS FOR NON-REPETITIVE TASKS
 
     //Method for changing execution time for non-repetitive tasks
-    public int getTime() {
-        if (this.interval == 0) {
-            return time;
-        }
-        return startTime;
+    public LocalDateTime getTime() {
+        return (repeated ? startTime : time);
     }
 
-    public void setTime(int time) throws Exception {
-        try {
-            if (this.interval != 0) {
-                this.startTime = 0;
-                this.endTime = 0;
-                this.interval = 0;
-            } else (time <= 0) {
-                throw new IllegalArgumentException();
-            }
-            this.time = time;
-        } catch (IllegalArgumentException d) {
 
+    public void setTime(LocalDateTime time) throws IllegalArgumentException {
+
+        if (time.equals(null)) {
+            throw new IllegalArgumentException();
+        }
+        if (!repeated) {
+            this.startTime = null;
+            this.endTime = null;
+            this.interval = null;
         }
     }
+
+
 
     // METHODS FOR REPETITIVE TASKS
     //Method for reading and changing execution time for repetitive tasks
-    public int getStartTime() {
-        if (this.interval != 0) {
-            return startTime;
-        }
-        return time;
+    public LocalDateTime getStartTime() {
+        return (repeated ? startTime : time);
     }
 
-    public void setStartTime(int startTime) {
+    public LocalDateTime getEndTime() {
+        return (repeated ? endTime : time);
+    }
+
+
+    public LocalDateTime getRepeatInterval() {
+        return (repeated ? interval : null);
+    }
+
+    public void setTime(LocalDateTime startTime, LocalDateTime endTime, LocalDateTime interval) throws IllegalArgumentException {
+
+        if (startTime.equals(null) || endTime.isBefore(startTime) || interval.equals(null)) {
+            throw new IllegalArgumentException("Something is bad");
+
+        }
         this.startTime = startTime;
-    }
-
-
-    public int getEndTime() {
-        if (this.interval != 0) {
-            return endTime;
-        }
-
-        return time;
-    }
-
-    public void setEndTime(int endTime) {
-
         this.endTime = endTime;
+        this.interval = interval;
+
     }
 
-    public int getRepeatInterval() {
-        if (this.interval != 0) {
-            return interval;
-        } else {
-            return 0;
-        }
-    }
-
-    public void setTime(int startTime, int endTime, int interval) throws Exception {
-        try {
-            if (startTime < 0 || endTime < 0) {
-                throw new IllegalArgumentException();
-
-            } else if (this.interval == 0) {
-                throw new IllegalStateException();
-            } else {
-                this.startTime = startTime;
-                this.endTime = endTime;
-                this.interval = interval;
-                this.time = 0;
-            }
-
-        } catch (IllegalArgumentException d) {
-
-        }
-    }
 
 
     public boolean isRepeated() {
-        if (this.interval != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return repeated;
     }
 
 
-    public int nextTimeAfter(int current) {
-        if (current < 0) throw new IllegalArgumentException(" No negative numbers ");
-        if (isActive()) {
+    public void nextTimeAfter(LocalDateTime current) {
+        if (current.equals(null)) throw new IllegalArgumentException(" No negative numbers ");
+        if (isActive() && isRepeated()) {
 
-            return this.time > current ? this.time : -1;
+
         }
     }
 
     }
 
-    @Override
-    public String toString(){
-    String Task = "'" + title + "'";
-    if(isRepeated())
-        task += "" ;
-    }
 
-    public boolean equals (Object obj){
-    if(obj == null || !(obj instanceof  Task)){
-        return false;
-    }
-    return true;
-    }
 
-    public int hashCode(){
-    int hash = 1;
 
-    }
-
-    public Task cloneTask(){
-    Task task = this;
-    return  task;
-    }

@@ -20,7 +20,7 @@ public class Circle {
         }
     }
 
-    public double getRadius() {
+    public int getRadius() {
         return radius;
     }
 
@@ -32,7 +32,7 @@ public class Circle {
         }
     }
 
-    public int getArea(){
+    public double getArea(){
         return Math.PI * radius * radius;
     }
 }
