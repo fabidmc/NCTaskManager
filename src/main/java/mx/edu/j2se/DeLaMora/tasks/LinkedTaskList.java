@@ -10,9 +10,15 @@ import java.util.LinkedList;
 public class LinkedTaskList extends AbstractTaskList {
 
     private Node head;
+    private Node node;
     private int length = 0;
 
-    LinkedList<Task> newarr = new LinkedList<Task>();
+    /* Linked list Node*/
+    class Node {
+        Task data;
+        Node next;
+
+        
 
     //METHOD FOR ADDING TASKS;
     int index = 0;

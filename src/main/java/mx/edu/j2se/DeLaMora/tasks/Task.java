@@ -27,13 +27,14 @@ public class Task implements Serializable {
     // Constructor for a  repetitive task
     public Task(String title, LocalDateTime startTime, LocalDateTime endTime, LocalDateTime interval) throws IllegalArgumentException {
 
-        if (startTime.equals(0) || endTime.equals(0) || interval.equals(0)) {
+        if (startTime.equals(0) || endTime.isBefore(startTime) || interval.equals(null)) {
             throw new IllegalArgumentException(" ERROR!!!! ");
         }
         this.title = title;
         this.startTime = startTime;
         this.endTime = endTime;
         this.interval = interval;
+
     }
 
 
@@ -44,7 +45,11 @@ public class Task implements Serializable {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String title) throws IllegalStateException {
+
+        if (title.equals("")) {
+            throw new IllegalStateException("This is not a correct string");
+        }
 
         this.title = title;
     }
@@ -71,16 +76,16 @@ public class Task implements Serializable {
 
     public void setTime(LocalDateTime time) throws IllegalArgumentException {
 
-        if (time.equals(null)) {
+        if (time.equals(null) || time.isBefore(LocalDateTime.now())) {
             throw new IllegalArgumentException();
         }
-        if (!repeated) {
+        if (this.repeated) {
             this.startTime = null;
             this.endTime = null;
             this.interval = null;
         }
+        this.time = time;
     }
-
 
 
     // METHODS FOR REPETITIVE TASKS
@@ -110,23 +115,46 @@ public class Task implements Serializable {
 
     }
 
-
-
     public boolean isRepeated() {
-        return repeated;
+        return this.repeated;
     }
 
 
-    public void nextTimeAfter(LocalDateTime current) {
-        if (current.equals(null)) throw new IllegalArgumentException(" No negative numbers ");
-        if (isActive() && isRepeated()) {
 
+    @Override
+    public int hashCode() {
 
+        if (isRepeated()) {
+            return startTime.hashCode() * endTime.hashCode() * interval.hashCode() * title.hashCode();
         }
-    }
+
+        return time.hashCode() * title.hashCode();
 
     }
+        @Override
+        public String toString() {
+            if(!isRepeated()){
+                 return "Task {title=" + title + ", time=" + time
+                    + ", active=" + active + ", repeat=" + repeated + "}";
+        }
+            else{
+                 return "Task {title=" + title + ", time=" + startTime
+                + ", endTime=" + endTime + ", interval=" + interval
+                + ", active= " + active + ", repeat= " + repeated + "}";
+
+    }
+    }
+
+    @Override
+    public boolean equals(Object ob){
 
 
+    }
+
+    @Override
+    public Task clone(){
+        return this;
+    }
+}
 
 

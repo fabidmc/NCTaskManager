@@ -12,8 +12,9 @@ public class ArrayTaskList extends AbstractTaskList {
     final int N = arrayList.length;
 
     // METHOD FOR ADDING A NEW TASK
+    // Se crea una copia temporal para ir agregando los nuevos tasks al arreglo
 
-    public void add(Task task) throws NullPointerException {
+    public void add(Task task)  {
 
         index++;
         Task[] newarr = new Task[index];
@@ -25,6 +26,7 @@ public class ArrayTaskList extends AbstractTaskList {
 
 
     // METHOD FOR REMOVING TASKS THAT ARE DUPLICATES
+    // Metodo para reemover tasks del arreglo asi como los duplicados
 
     public boolean remove(Task task) {
 

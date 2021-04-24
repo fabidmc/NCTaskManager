@@ -2,6 +2,7 @@ package mx.edu.j2se.DeLaMora.tasks;
 
 import java.io.Serializable;
 import java.util.stream.Stream;
+import java.util.*;
 import java.util.Iterator;
 
 public abstract class AbstractTaskList implements Iterable<Task>, Serializable, Cloneable {
@@ -13,6 +14,8 @@ public abstract class AbstractTaskList implements Iterable<Task>, Serializable, 
     public abstract int size();
 
     public abstract Task getTask(int index);
+
+    public abstract int getIndex(Task task);
 
     public abstract Stream<Task> getStream();
 
