@@ -3,22 +3,26 @@ package mx.edu.j2se.DeLaMora.tasks;
 import org.w3c.dom.*;
 
 import javax.xml.soap.Node;
+import java.io.*;
 import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import java.util.LinkedList;
 
+
+
 public class LinkedTaskList extends AbstractTaskList {
 
-    private Node head;
-    private Node node;
-    private int length = 0;
+    public Node head;
+    public int length = 0;
+    public Node newnode;
+
 
     /* Linked list Node*/
-    class Node {
+    public class Node{
         Task data;
         Node next;
+    }
 
-        
 
     //METHOD FOR ADDING TASKS;
     int index = 0;
@@ -26,9 +30,13 @@ public class LinkedTaskList extends AbstractTaskList {
     public void add(Task task) {
 
         Node node = new Node(task);
-        Node iterator = head;
-        while (iterator.getNext() != null){
-            iterator = iterator.getNext();
+
+        if(head.equals(null)) {
+            head = node;
+        } else{
+            Node newnode = head;
+        while (newnode.next != null){
+            newnode = newnode.getNext();
         }
         iterator.setNext(node);
         length++;
@@ -75,6 +83,11 @@ public class LinkedTaskList extends AbstractTaskList {
             public org.w3c.dom.Node appendChild(org.w3c.dom.Node newChild) throws DOMException {
                 return null;
             }
+
+
+        public Task next(){
+            index++;
+            return getTask(index-1);
         }
     }
-}
+    }
