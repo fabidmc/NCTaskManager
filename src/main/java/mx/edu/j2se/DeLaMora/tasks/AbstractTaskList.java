@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 import java.util.*;
 import java.util.Iterator;
 
-public abstract class AbstractTaskList implements Iterable<Task>, Serializable, Cloneable {
+public abstract class AbstractTaskList implements Iterable<Task>{
 
     public abstract void add(Task task);
 
@@ -19,7 +19,6 @@ public abstract class AbstractTaskList implements Iterable<Task>, Serializable, 
 
     public abstract Stream<Task> getStream();
 
-    public abstract Iterator iterator();
 
    // public abstract incoming(int from, int to);
 

@@ -7,11 +7,11 @@ public class Task implements Serializable {
 
     // VARIABLES AND THE TYPE
 
-    private String title;
-    private LocalDateTime time;
-    private LocalDateTime startTime, endTime, interval;
+    public String title;
+    public LocalDateTime time;
+    public LocalDateTime startTime, endTime, interval;
 
-    private boolean active, repeated;
+    public boolean active, repeated;
 
 
     // Constructor for non-repetitive task
@@ -145,11 +145,9 @@ public class Task implements Serializable {
     }
     }
 
-    @Override
-    public boolean equals(Object ob){
 
 
-    }
+
 
     @Override
     public Task clone(){

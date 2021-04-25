@@ -1,8 +1,8 @@
 package mx.edu.j2se.DeLaMora.tasks;
 
-public abstract class TaskListFactory extends AbstractTaskList{
+public class TaskListFactory {
 
-    public static AbstractTaskList createTaskList(ListTypes.types type){
+    public AbstractTaskList createTaskList(ListTypes.types type){
 
         if (type == ListTypes.types.ARRAY){
             return new ArrayTaskList();}
@@ -12,6 +12,7 @@ public abstract class TaskListFactory extends AbstractTaskList{
         return null;
     }
 }
+
 
 
 

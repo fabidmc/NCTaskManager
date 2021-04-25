@@ -6,7 +6,7 @@ package mx.edu.j2se.DeLaMora.tasks;
 
 public class ArrayTaskList extends AbstractTaskList {
 
-    private int index = 0;
+    public int index = 0;
 
     Task[] arrayList = new Task[index];
     final int N = arrayList.length;
@@ -14,7 +14,7 @@ public class ArrayTaskList extends AbstractTaskList {
     // METHOD FOR ADDING A NEW TASK
     // Se crea una copia temporal para ir agregando los nuevos tasks al arreglo
 
-    public void add(Task task)  {
+    public void add(Task task) {
 
         index++;
         Task[] newarr = new Task[index];
@@ -49,31 +49,52 @@ public class ArrayTaskList extends AbstractTaskList {
     }
 
 
-        public int size(){
-            return arrayList.length;
-        }
+    public int size() {
+
+        return arrayList.length;
+    }
 
 
-
-        public Task getTask ( int index){
-            try {
-                if (index < 0 || index > this.index) {
-                    throw new IndexOutOfBoundsException(" ERROR!!! ");
-                }
-            } catch (IndexOutOfBoundsException d) {
+    public Task getTask(int index) {
+        try {
+            if (index < 0 || index > this.index) {
+                throw new IndexOutOfBoundsException(" ERROR!!! ");
             }
-            return arrayList[index];
-
+        } catch (IndexOutOfBoundsException d) {
         }
+        return arrayList[index];
 
-
+    }
 
 
     @Override
     public Stream<Task> getStream() {
-        return null;
+
+        return Arrays.stream(arrayList);
     }
-}
+
+
+
+
+        public String toString() {
+            String array = "";
+            for (Task arr : arrayList) {
+                if (!arr.repeated) {
+                    return "Task {title=" + arr.title + ", time=" + arr.time
+                            + ", active=" + arr.active + ", repeat=" + false + "}";
+                } else {
+                    return "Task {title=" + arr.title + ", time=" + arr.startTime
+                            + ", endTime=" + arr.endTime + ", interval=" + arr.interval
+                            + ", active= " + arr.active + ", repeat= " + true + "}";
+
+                }
+            }
+            return array;
+        }
+
+    }
+
+
 
 
 
