@@ -73,12 +73,35 @@ public class LinkedTaskList extends AbstractTaskList {
 
 
 
+        public void remove(Task task) {
+            Node n = head;
+            Node before = null;
 
-            public boolean hasNext() {
-                return (index < size());
+
+            while (n != null && before.data == task) {
+                head = n.next;
+                n = head;
             }
 
+
+            while (n != null) {
+                while (n != null && n.data != task) {
+                    before = n;
+                    before = n. next;
+                }
+
+
+                if (n == null)
+                    return;
+
+                before.next = n.next;
+                n = before.next;
+            }
         }
+
+
+
+    }
 
     }
 

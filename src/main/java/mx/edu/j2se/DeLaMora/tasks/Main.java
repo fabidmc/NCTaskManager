@@ -1,5 +1,6 @@
 package mx.edu.j2se.DeLaMora.tasks;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 import static java.lang.System.out;
 
@@ -8,7 +9,7 @@ public class Main {
 
 		// TASK NO REPETITIVE
 
-		Task mytask = new Task("meeting in a cafe", 10);
+		Task mytask = new Task("meeting in a cafe", LocalDateTime.parse("2021-04-01T09:00:00"));
 		mytask.setActive(true);
 		System.out.println("Task:\t" + mytask.getTitle());
 		System.out.println("Start Time\t:" + mytask.getTime());
@@ -30,7 +31,7 @@ public class Main {
 
 		// TASK REPETITIVE
 
-		Task mytask2 = new Task("breakfast", 9, 10, 5);
+		Task mytask2 = new Task("breakfast", LocalDateTime.parse("2021-04-01T10:00:00"),LocalDateTime.parse("2021-04-01T11:00:00"),5);
 		mytask2.setActive(true);
 		System.out.println("Task:\t" + mytask2.getTitle());
 		System.out.println("Start time of this task\t:" + mytask2.getStartTime() + "\tand this will end at:\t" + mytask2.getEndTime());
@@ -45,10 +46,16 @@ public class Main {
 		System.out.println("The task will be repeated?:\t" + mytask2.isRepeated());
 
 		// TASK LIST
-		Task mytask3 = new Task("Hacer ejercicio",10);
-		ArrayTaskList arrayBla = new ArrayTaskList();
-		arrayBla.add(mytask3);
-		System.out.println("La tarea agregada tiene indice " + arrayBla.getTask(0));
+
+		ArrayTaskList arrayTask = new ArrayTaskList();
+		arrayTask.add(mytask);
+
+
+
+
+
+
+
 
 
 	}
